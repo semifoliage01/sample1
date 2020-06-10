@@ -1,0 +1,161 @@
+<!-- S20_4.view.xml -->
+<!-- S20.controller.js -->
+<!-- InvoiceList Table-->
+<mvc:View
+   controllerName="whSample3.controller.S9"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:core="sap.ui.core" >
+   
+   <!-- table1 -->
+	<Table
+			id="invoiceTable"
+			items="{
+					path: 'invoice>/Invoices',
+					sorter: {
+							path : 'ShipperName',
+							group : true
+							}
+						}"
+			width="auto"
+			>
+		<headerToolbar>
+			<Toolbar>			
+				<Title text="invoice Table1 S20_4" />
+				<ToolbarSpacer />
+				<SearchField 
+							placeholder="please enter the invoice name etc"
+							showSearchButton="true"	
+							showRefreshButton="true"
+							width="50%"
+							search=""
+								/>
+			</Toolbar>
+		</headerToolbar>	
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="S20_4 Table1_invoice"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Quantity" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Name" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<Text text="Status" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Supplier" />
+			</Column>
+			<Column
+				hAlign="End">
+				<Text text="Price" />
+			</Column>
+		</columns>			
+		<items>
+			<ColumnListItem
+							type="Navigation"
+							press="onPressDetail"
+							>
+				<cells>
+					<Text
+						text="{invoice>Quantity}" />
+					<Text
+						text="{invoice>ProductName}" />
+					<Text
+						text="{invoice>Status}" />
+					<Text
+						text="{invoice>ShipperName}" />
+					<Text
+						text="{invoice>ExtendedPrice}" />
+							
+				</cells>
+			</ColumnListItem>
+		</items>	
+	</Table>
+	
+	<!-- table2 -->
+	<Table
+		id="invoiceList2"
+		class="sapUiResponsiveMargin"
+		width="auto"
+		items="{
+			path : 'invoice>/Invoices',
+			sorter : {
+				path : 'ShipperName',
+				group : true
+			}
+		}">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>invoiceListTitle} S20_4 table2"/>
+				<ToolbarSpacer/>
+				<SearchField width="50%" search=".onFilterInvoices"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column
+				hAlign="End"
+				minScreenWidth="Small"
+				demandPopin="true"
+				width="4em">
+				<Text text="{i18n>columnQuantity}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>columnName}"/>
+			</Column>
+			<Column
+				minScreenWidth="Small"
+				demandPopin="true">
+				<Text text="{i18n>columnStatus}"/>
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="false">
+				<Text text="{i18n>columnSupplier}"/>
+			</Column>
+			<Column
+				hAlign="Center">
+				<Text text="{i18n>columnPrice}"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem
+				type="Navigation"
+				press=".onPressDetail">
+				<cells>
+					<ObjectNumber number="{invoice>Quantity}" emphasized="false"/>
+					<ObjectIdentifier title="{invoice>ProductName}" titlePress=".onOpenInvoiceDetail" text="{invoice>ProductName}" titleActive="true"/>
+					<Text text="{
+						path: 'invoice>Status',
+						formatter: '.formatter.statusText'
+					}"/>
+					<Text text="{invoice>ShipperName}"/>
+					<ObjectNumber
+						number="{
+							parts: [{path: 'invoice>ExtendedPrice'}, {path: 'view>/currencys/currency'}],
+							type: 'sap.ui.model.type.Currency',
+							formatOptions: {
+								showMeasure: false
+							}
+						}"
+						unit="{view>/currencys/currency}"
+						state="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success' }"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+</mvc:View>

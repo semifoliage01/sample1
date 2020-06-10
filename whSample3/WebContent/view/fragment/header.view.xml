@@ -1,0 +1,12 @@
+<mvc:View
+   controllerName="whSample3.controller.fragment.header"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   >
+   <OverflowToolbar>	
+				<Button text="Info" press="handlePressOpenMenu"/>	
+				<Button text="BackToMain" type="Transparent" press="onBack"/>	
+				<Button text="Logon" press=".onOpenDialog" /> 
+								
+	</OverflowToolbar>
+</mvc:View>

@@ -1,0 +1,58 @@
+<!-- S20_1.view.xml -->
+<!-- S20_1.controller.js -->
+<!-- InvoiceList-->
+<mvc:View
+   controllerName="whSample3.controller.S9"
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:mvc="sap.ui.core.mvc">
+   <List
+      id="invoiceList"
+      headerText="{i18n>invoiceListTitle}"
+      class="sapUiResponsiveMargin"
+      width="auto"
+      items="{invoice>/Invoices}" 
+      
+      mode="MultiSelect"
+      includeItemInSelection="true"
+      backgroundDesign="Solid"
+      
+      selectionChange="onSelectionChange"
+      >
+      	<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Products  S20_1" level="H2" />
+					<ToolbarSpacer />
+					<Select
+						selectedKey="MultiSelect"
+						change="handleSelectChange">
+						<items>
+							<core:Item key="None" text="No Selection" />
+							<core:Item key="SingleSelect" text="Single Selection" />
+							<core:Item key="SingleSelectLeft" text="Single Selection Left" />
+							<core:Item key="SingleSelectMaster" text="Single Selection (Master)" />
+							<core:Item key="MultiSelect" text="Multi Selection" />
+						</items>
+					</Select>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+      <items>
+      	<StandardListItem
+      		info="lala"
+      		icon="{
+      				path:'invoice>Quantity',
+      				formatter:'.formatter.iconChange'
+      				}"
+			title="{invoice>ProductName}"
+			counter="{invoice>Quantity}"
+			type="Navigation" />
+          
+      </items>
+   </List>
+   <Panel visible="false" id="idInfoToolbar">
+   		<Text id="idFilterLabel" text="selected"/>
+   		<Text id="selectedItems"/>
+   </Panel>
+</mvc:View>

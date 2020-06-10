@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="logonDialog"
+      title="Hello {/recipient/name}"
+      icon="sap-icon://account"
+      >       
+      <content >
+      	<HBox width="80%" class='logonAlignCenter'>
+      		
+      		<Label text="user" class="sapUiSmallMargin sapUiLargeMarginLeft " />      		
+      		<Input  width="60%"  ></Input>
+      	</HBox>
+      	<HBox >
+	      	<Label text="password" class="sapUiSmallMargin"/>
+	      	<Input  type="password" width="60%"></Input>      	
+      	</HBox>
+      	
+      </content>
+      <buttons>      		
+      	<Button text="OK" press="onCloseDialog"/>
+      	<Button text="Cancel" press="onCloseDialog"/>      	
+      </buttons>
+   </Dialog>
+</core:FragmentDefinition>

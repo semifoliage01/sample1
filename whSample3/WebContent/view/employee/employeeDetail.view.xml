@@ -1,0 +1,85 @@
+<!-- employeeDetail.view.xml -->
+<!-- List page -->
+<mvc:View
+	controllerName="whSample3.controller.employee.employeeDetail"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+		   
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+	xmlns:f="sap.ui.layout.form"
+	
+  	displayBlock="true">
+  	
+  	<Page 
+  			showNavButton="true" navButtonPress=".onNavBack">
+  			<ObjectHeader 
+  					intro="{employees>EmployeeID}"
+  					title="{employees>FirstName} {employees>LastName}"
+  							>
+  			
+  			
+  			</ObjectHeader>
+  			<Panel
+				id="employeePanel"
+				width="auto"
+				class="sapUiResponsiveMargin sapUiNoContentPadding">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>EmployeeIDColon} {employees>EmployeeID}" level="H2"/>
+						<ToolbarSpacer />
+						<Link text="{i18n>FlipToResume}" tooltip="{i18n>FlipToResume.tooltip}" press=".onShowEmployeeResume"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<f:SimpleForm
+						minWidth="1024"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
+						columnsL="1" columnsM="1">
+						<f:content>
+							<Label text="{i18n>formFirstName}" />
+							<Text text="{employees>FirstName}"/>
+							<Input value="{employees>FirstName}" liveChange=".onInputChange" />
+							<Label text="{i18n>formLastName}"/>
+							<Text text="{employees>LastName}"/>
+							<Input value="{employees>LastName}" liveChange=".onInputChange"	/>
+							<Label text="{i18n>formAddress}"/>
+							<Text text="{employees>Address}"/>
+							<Input value="" />
+							<Label text="{i18n>formCity}"/>
+							<Text text="{employees>City}, {Region}"/>
+							<Input value=""/>
+							<Label text="{i18n>formPostalCode}"/>
+							<Text text="{employees>PostalCode}"/>
+							<Input value=""/>
+							<Label text="{i18n>formPhoneHome}"/>
+							<Text text="{employees>HomePhone}"/>
+							<Input value=""/>
+							<Label text="{i18n>formCountry}"/>
+							<Text text="{employees>Country}"/>
+							<Select id="country" selectedKey="{Country}">
+								<items>
+									<core:Item text="England" key="England"/>
+									<core:Item text="Germany" key="Germany"/>
+									<core:Item text="USA" key="USA"/>
+								</items>
+							</Select>
+						</f:content>
+						<f:toolbar>
+						
+							<Toolbar style="Clear"> 								 
+								<ToolbarSpacer />
+								<Button icon="sap-icon://settings" text="Change" visible="{= !${view>/currencys/hasUIChanges}}" press=".onChange"/>
+								<Button icon="sap-icon://save" text="Save" visible="{= ${view>/currencys/hasUIChanges}}" press=".onSave"/>
+								<Button icon="sap-icon://drop-down-list" text="????Cancel" visible="{= ${view>/currencys/hasUIChanges}}" press=".onCancel"/>
+							</Toolbar>
+						</f:toolbar>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Label text="failed at Step 8: Navigate with Flip Transition" />
+  	</Page>
+  	</mvc:View>

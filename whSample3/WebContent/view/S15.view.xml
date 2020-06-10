@@ -1,0 +1,32 @@
+<mvc:View
+   controllerName="whSample3.controller.S15"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   >
+   <Panel
+      headerText="{i18n>helloPanelTitle}"
+      class="sapUiResponsiveMargin"
+      width="auto" >
+      <headerToolbar>
+      		<Toolbar>
+      		<Button text="Back" type="Transparent" press="onBack"/>		
+      		</Toolbar>
+      			
+      		        		
+						
+      </headerToolbar>
+      <content>
+         <Button
+            text="{i18n>showHelloButtonText}"
+            press=".onShowHello"
+            class="myAppDemoWT myCustomButton"/>
+         <Input
+            value="{/recipient/name}"
+            valueLiveUpdate="true"
+            width="60%"/>
+         <FormattedText
+            htmlText="Hello {/recipient/name}"
+            class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+      </content>
+   </Panel>
+</mvc:View>

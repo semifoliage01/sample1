@@ -1,0 +1,203 @@
+<mvc:View
+	controllerName="whSample3.controller.S9"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+		   
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+	
+  	displayBlock="true">
+  
+   <App id="whSample3" backgroundOpacity="0.4"  class="myAppDemoWT">
+      <pages>
+         <Page id="S11" title="{i18n>homePageTitle}" icon="sap-icon://sort" 
+         		floatingFooter="true" showHeader="true"   
+         		showNavButton="true"
+				navButtonPress=".onNavBack">
+         	<headerContent>
+         		<Button
+							icon="sap-icon://account"
+							press=".openHelloDialog"/>
+				<Button text="Logon" type="Transparent" press=".onOpenDialog"/>
+				<Button type="Transparent" text="Sort" icon="sap-icon://sort" press="onSort"/>
+				<Button type="Transparent" text="Group" icon="sap-icon://group-2" press="onGroup"/>
+				<SearchField id="maxPrice" liveChange="onFilter" width="150px">
+								<layoutData><OverflowToolbarLayoutData minWidth="100px" maxWidth="100px" shrinkable="true"/></layoutData>
+				</SearchField>
+         	</headerContent>
+         	
+            <content>
+            	<Text id="nowDate" text="here" />
+            	<ComboBox id="comboBox1" 
+            				items="{page>/Pages}"
+            				selectedKey="1"
+            				change="onComboBoxChanged"
+            				>
+								<core:Item key="{page>pageKey}" text="{page>pageName}" /> 
+				</ComboBox>
+               <Panel
+                  headerText="{i18n>helloPanelTitle}"
+                  class="sapUiResponsiveMargin"
+							width="auto">
+                  <content>
+
+                     <Button
+                        text="{i18n>showHelloButtonText}"
+                        press=".onShow"
+                        class="myCustomButton"/>
+                     <Input
+                        value="{
+                        		path:'/recipient/num',
+                        		formatter: '.formatter.roundToMillion',
+                        		type: 'sap.ui.model.type.Integer'
+                        		}"
+                        tooltip="The actual value: '{/recipient/num}'"
+                        description="Hello {/recipient/name}"
+                        valueLiveUpdate="true"
+                        width="60%"/>
+                     <Text
+						text="Hello {/recipient/name}"
+						class="sapUiSmallMargin myCustomText"/>
+					<FormattedText
+									htmlText="Hello formattedText {/recipient/name}"
+									class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+                     <Button
+                        text="{i18n>showNextPage}"
+                        press=".onShowNextPage"
+                        />
+                     <Button
+                        text="{i18n>showMainPage}"
+                        press=".onShowMainPage"
+                        />   
+                     <Input
+                        value="{
+                        		path:'/recipient/zip',
+                        		type: '.zipcode'
+                        		}"
+                        tooltip="The name of '{/recipient/zip}'"
+                        description="entered zipcode: {/recipient/zip}"
+                        valueLiveUpdate="true"
+                        width="60%"/>
+                     <VBox>
+						<Button
+							id="myButton"
+							icon="sap-icon://action"
+							text="{i18n>doSomething}"
+							press=".onDoSomethingPress"
+							type="Emphasized"/>
+						<Label
+							id="LabelWithMissingI18NText"
+							text="{i18n>Label_Missing_I18N_Text}"/>
+					</VBox>                   
+                  </content>
+               </Panel>
+               <mvc:XMLView viewName="whSample3.view.S20_4"/>
+               <mvc:XMLView viewName="whSample3.view.S20_3"/>
+               <mvc:XMLView viewName="whSample3.view.S20_1"/>
+               <mvc:XMLView viewName="whSample3.view.S20_2"/>
+               <mvc:XMLView viewName="whSample3.view.S20"/>
+            </content>
+            <footer>
+            	<OverflowToolbar>
+					<mvc:XMLView viewName="whSample3.view.fragment.footer"/>	
+				</OverflowToolbar>            
+            </footer>
+         </Page>
+         
+         <!-- page 2 S9 -->
+         <Page id="S9" title="{i18n>S9PageShow}" showNavButton="true" navButtonPress="onBack">
+	         <headerContent>	         		
+					<Button text="Back" type="Transparent" press="onBack"/>					
+	        </headerContent>
+         	<l:VerticalLayout class="sapUiContentPadding" width="100%">
+		      	<l:content>
+				      <Button id="bt1" text="Say Hello from step5"  press=".onShow" width="33%"/>
+				      <Button id="bt2" text="Say Hello from step5___2"  press=".onShow" width="33%"/>
+				      <Button id="bt3" text="Say Hello from step5___3"  press=".onShowProperties" width="33%"/>
+				      <Button id="bt4" text="{i18n>showHelloButtonText}"  press=".onShowProperties" width="33%"/>
+				      <Text text="text from S4 view" textAlign="Center"/>
+				      <Input type="Date" fieldWidth="30%" showSuggestion="true" description="input field" valueState="Success"/>
+				      <Input type="Text" fieldWidth="30%" showSuggestion="true"
+						      value="{/recipient/num}"  description="Hello {/recipient/name}"
+						      valueLiveUpdate="true"       width="60%" ></Input>
+				</l:content>
+			  </l:VerticalLayout>
+			  <l:VerticalLayout width="80%">
+			  	<l:content>
+			  		<Input type="Text"    placeholder="this is placeholder ..."  showSuggestion="true" 
+			  					suggestionItems="{/p}"  suggestionItemSelected="suggestionItemSelected"
+			  					filterSuggests="true">
+			  					<suggestionItems>
+									<core:ListItem text="{Product}" additionalText="{Weight}"/>
+								</suggestionItems>
+			  		</Input> 
+			  		<Input type="Text" width="100%"   placeholder="this is placeholder for suggestion tab ..."  showSuggestion="true" 
+			  					suggestionRows="{/p}"  suggestionItemSelected="suggestionItemSelected" showValueHelp="true">
+			  						<suggestionColumns>
+										<Column
+											hAlign="Begin"
+											popinDisplay="Inline"
+											demandPopin="true">
+											<Label text="ProductName"/>
+										</Column>
+										<Column
+											hAlign="Begin"
+											popinDisplay="Inline"
+											demandPopin="true">
+											<Label text="Weight"/>
+										</Column>
+										<Column
+											hAlign="Begin"
+											popinDisplay="Inline"
+											demandPopin="true">
+											<Label text="Sum"/>
+										</Column>
+									</suggestionColumns>
+									<suggestionRows>
+										<ColumnListItem>
+										<cells>
+											<Label text="{Product}"/>
+											<Label text="{Weight}"/>									
+											<Label
+												text="{
+					 		 						parts:[{path:'Product'},{path:'Weight'}]
+												}"/>
+										</cells>
+										</ColumnListItem>
+									</suggestionRows>
+			  		</Input>
+			  		
+			  	</l:content>
+			  		
+			  </l:VerticalLayout>
+			  <footer>
+				<OverflowToolbar>
+					<mvc:XMLView viewName="whSample3.view.fragment.footer"/>	
+				</OverflowToolbar>
+											
+			</footer>
+         </Page>
+         
+         <!-- page 15 -->
+         <Page id="S15" title="{i18n>homePageTitle}" showNavButton="true" navButtonPress="onBack">
+         	<headerContent>
+         		<mvc:XMLView viewName="whSample3.view.fragment.header"/>
+				
+         	</headerContent>
+			<content>
+				<mvc:XMLView viewName="whSample3.view.S15"/>
+			
+			</content>
+			<footer>
+				<OverflowToolbar>
+					<mvc:XMLView viewName="whSample3.view.fragment.footer"/>	
+				</OverflowToolbar>
+											
+			</footer>
+		
+		</Page>
+     
+      </pages>
+   </App> 
+</mvc:View>

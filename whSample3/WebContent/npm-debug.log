@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\i048389\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'proxy' ]
+2 info using npm@3.10.9
+3 info using node@v6.9.1
+4 verbose run-script [ 'preproxy', 'proxy', 'postproxy' ]
+5 info lifecycle Sample-Package@1.0.0~preproxy: Sample-Package@1.0.0
+6 silly lifecycle Sample-Package@1.0.0~preproxy: no script for preproxy, continuing
+7 info lifecycle Sample-Package@1.0.0~proxy: Sample-Package@1.0.0
+8 verbose lifecycle Sample-Package@1.0.0~proxy: unsafe-perm in lifecycle true
+9 verbose lifecycle Sample-Package@1.0.0~proxy: PATH: C:\Users\i048389\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;C:\Users\i048389\workspace\workspace_luna_ui5\newSample\whSample3\WebContent\node_modules\.bin;c:\windows\system32;c:\windows;c:\windows\system32\wbem;c:\program files (x86)\common files\oracle\java\javapath;c:\program files\docker\docker\resources\bin;c:\programdata\oracle\java\javapath;c:\python27\;c:\python27\scripts;c:\windows\system32\windowspowershell\v1.0\;c:\program files\java\jdk1.8.0_101\;java_home;c:\program files\nodejs\;c:\programdata\chocolatey\bin;c:\program files\java\jdk1.8.0_112\bin;c:\program files\git\cmd;c:\fpc\3.0.4\bin\i386-win32;c:\program files\microsoft vs code\bin;c:\windows\system32\openssh\;C:\Program Files\Microsoft VS Code\bin;C:\Users\i048389\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\i048389\AppData\Local\Programs\Python\Python36-32\;C:\Users\i048389\AppData\Roaming\npm;C:\Users\i048389\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\i048389\AppData\Local\GitHubDesktop\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+10 verbose lifecycle Sample-Package@1.0.0~proxy: CWD: C:\Users\i048389\workspace\workspace_luna_ui5\newSample\whSample3\WebContent
+11 silly lifecycle Sample-Package@1.0.0~proxy: Args: [ '/d /s /c', 'node proxy.js' ]
+12 silly lifecycle Sample-Package@1.0.0~proxy: Returned: code: 1  signal: null
+13 info lifecycle Sample-Package@1.0.0~proxy: Failed to exec proxy script
+14 verbose stack Error: Sample-Package@1.0.0 proxy: `node proxy.js`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Users\i048389\AppData\Roaming\npm\node_modules\npm\lib\utils\lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Users\i048389\AppData\Roaming\npm\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid Sample-Package@1.0.0
+16 verbose cwd C:\Users\i048389\workspace\workspace_luna_ui5\newSample\whSample3\WebContent
+17 error Windows_NT 10.0.17134
+18 error argv "c:\\Program Files\\nodejs\\node.exe" "C:\\Users\\i048389\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "run" "proxy"
+19 error node v6.9.1
+20 error npm  v3.10.9
+21 error code ELIFECYCLE
+22 error Sample-Package@1.0.0 proxy: `node proxy.js`
+22 error Exit status 1
+23 error Failed at the Sample-Package@1.0.0 proxy script 'node proxy.js'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the Sample-Package package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node proxy.js
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs Sample-Package
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls Sample-Package
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

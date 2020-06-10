@@ -1,0 +1,39 @@
+{
+"emails":[
+	{
+		"Customer":"Ageas B.V. ",
+		"Country":"NL",
+		"Send 'TO'":"peter.wong01@sap.com",
+		"Send 'CC'":"Thorsten.Boeker@sap.com "
+	},
+	{
+		"Customer":"APL Co. Pte Ltd ",
+		"Country":"SG",
+		"Send 'TO'":"Estee.Lim@sap.com",
+		"Send 'CC'":"Thorsten.Boeker@sap.com "
+	},
+	{
+		"Customer":"APLL ",
+		"Country":"SG",
+		"Send 'TO'":"saurabh.talesara@sap.com",
+		"Send 'CC'":"Thorsten.Boeker@sap.com;bob01.wang@sap.com "
+	},
+	{
+		"Customer":"ASM",
+		"Country":"SG",
+		"Send 'TO'":"Jack.Moloney@sap.com",
+		"Send 'CC'":"Thorsten.Boeker@sap.com "},
+	{
+		"Customer":"BHP Billiton",
+		"Country":"SG",
+		"Send 'TO'":"rohit.gupta@sap.com",
+		"Send 'CC'":"Thorsten.Boeker@sap.com "
+	},
+	{
+		"Customer":"Cerebos Pacific Limited ",
+		"Country":"SG",
+		"Send 'TO'":"Estee.Lim@sap.com",
+		"Send 'CC'":"Thorsten.Boeker@sap.com"
+	}
+]
+}

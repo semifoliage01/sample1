@@ -1,0 +1,34 @@
+html[dir="ltr"] .myAppDemoWT .myCustomButton.sapMBtn {
+   margin-right: 0.125rem;
+}
+
+html[dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
+   margin-left: 0.125rem;
+}
+
+.myAppDemoWT .myCustomText {
+   display: inline-block;
+   font-weight: bold;
+   color: #981;
+}
+
+Input{
+	background: blue;
+	color: red;
+}
+
+logonAlignCenter{
+	text-align: center;
+}
+
+logonUserField{
+	margin-right=2rem;
+}
+
+/*  ProductRating */
+.myAppDemoWTProductRating {
+	padding: 0.75rem;
+}
+.myAppDemoWTProductRating .sapMRI {
+	vertical-align: initial;
+}

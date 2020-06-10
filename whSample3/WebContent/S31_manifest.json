@@ -1,0 +1,116 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+	"id": "whSample3",
+	"type": "application",
+	"i18n": "i18n/i18n.properties",
+	"title": "{{appTitle}}",
+	"description": "{{appDescription}}",
+	"applicationVersion": {
+	  "version": "1.0.0"
+	}
+	,
+	"dataSources": {
+	  "invoiceRemote": {
+		"uri": "https://services.odata.org/V2/Northwind/Northwind.svc/",
+		"type": "OData",
+		"settings": {
+		  "odataVersion": "2.0"
+		}
+	  },
+	  "northwind": {
+		"uri": "http://localhost:8081/https://services.odata.org/V2/Northwind/Northwind.svc/",
+
+		"type": "OData",
+		"settings": {
+			"odataVersion": "2.0"
+			}
+		}
+	}
+  },
+  "sap.ui": {
+	"technology": "UI5",
+	"deviceTypes": {
+		"desktop": true,
+		"tablet": true,
+		"phone": true
+	}
+  },
+  "sap.ui5": {
+	"rootView": {
+		"viewName": "whSample3.view.S31",
+		"type": "XML",
+		"async": true,
+		"id": "whSample3"
+	},
+	"dependencies": {
+	  "minUI5Version": "1.60",
+	  "libs": {
+		"sap.m": {},
+		"sap.ui.commons":{}
+	  }
+	},
+	"models": {
+	  "i18n": {
+			"type": "sap.ui.model.resource.ResourceModel",
+			"settings": {
+				"bundleName": "whSample3.i18n.i18n"
+				}
+			},
+			"invoice": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "resources/json/Invoices.json"
+			},
+			"view": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "resources/json/View.json"
+			},		 
+			"invoiceOData": {
+				"dataSource": "invoiceRemote"
+			  }
+		},
+	  "resources": {
+		  "css": [
+			{
+			  "uri": "css/style.css"
+			},
+			{
+			  "uri": "css/style2.css"
+			}
+		  ]
+		},
+	"routing": {
+	  "config": {
+		"routerClass": "sap.m.routing.Router",
+		"viewType": "XML",
+		"viewPath": "whSample3.view",
+		"controlId": "whSample3",
+		"controlAggregation": "pages",
+		"async": true
+	  },
+	  "routes": [
+		{
+		  "pattern": "",
+		  "name": "root",
+		  "target": "root"
+		},
+		{
+		  "pattern": "detail",
+		  "name": "detail",
+		  "target": "detail"
+		}
+	  ],
+	  "targets": {
+		"root": {
+		  "viewId": "S11",
+		  "viewName": "S11"
+		},
+		"detail": {
+		  "viewId": "detail",
+		  "viewName": "Detail"
+		}
+	  }
+	}
+	
+  }
+}

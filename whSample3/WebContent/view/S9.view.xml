@@ -1,0 +1,72 @@
+<!-- S9.view.xml -->
+<!-- S9.controller.js -->
+<!-- manifest.json -->
+<mvc:View
+		   controllerName="whSample3.controller.S9"
+		   xmlns="sap.m"
+		   xmlns:mvc="sap.ui.core.mvc"
+		   xmlns:l="sap.ui.layout"
+		   xmlns:core="sap.ui.core"
+		   >  	  
+      <l:VerticalLayout class="sapUiContentPadding" width="100%">
+      	<l:content>
+		      <Button id="bt1" text="Say Hello from step5"  press=".onShow" width="33%"/>
+		      <Button id="bt2" text="Say Hello from step5___2"  press=".onShow" width="33%"/>
+		      <Button id="bt3" text="Say Hello from step5___3"  press=".onShowProperties" width="33%"/>
+		      <Button id="bt4" text="{i18n>showHelloButtonText}"  press=".onShowProperties" width="33%"/>
+		      <Text text="text from S4 view" textAlign="Center"/>
+		      <Input type="Date" fieldWidth="30%" showSuggestion="true" description="input field" valueState="Success"/>
+		      <Input type="Text" fieldWidth="30%" showSuggestion="true"
+				      value="{/recipient/name}"  description="Hello {/recipient/name}"
+				      valueLiveUpdate="true"       width="60%" ></Input>
+		</l:content>
+	  </l:VerticalLayout>
+	  <l:VerticalLayout width="80%">
+	  	<l:content>
+	  		<Input type="Text"    placeholder="this is placeholder ..."  showSuggestion="true" 
+	  					suggestionItems="{/p}"  suggestionItemSelected="suggestionItemSelected"
+	  					filterSuggests="true">
+	  					<suggestionItems>
+							<core:ListItem text="{Product}" additionalText="{Weight}"/>
+						</suggestionItems>
+	  		</Input> 
+	  		<Input type="Text" width="100%"   placeholder="this is placeholder for suggestion tab ..."  showSuggestion="true" 
+	  					suggestionRows="{/p}"  suggestionItemSelected="suggestionItemSelected" showValueHelp="true">
+	  						<suggestionColumns>
+								<Column
+									hAlign="Begin"
+									popinDisplay="Inline"
+									demandPopin="true">
+									<Label text="ProductName"/>
+								</Column>
+								<Column
+									hAlign="Begin"
+									popinDisplay="Inline"
+									demandPopin="true">
+									<Label text="Weight"/>
+								</Column>
+								<Column
+									hAlign="Begin"
+									popinDisplay="Inline"
+									demandPopin="true">
+									<Label text="Sum"/>
+								</Column>
+							</suggestionColumns>
+							<suggestionRows>
+								<ColumnListItem>
+								<cells>
+									<Label text="{Product}"/>
+									<Label text="{Weight}"/>									
+									<Label
+										text="{
+			 		 						parts:[{path:'Product'},{path:'Weight'}]
+										}"/>
+								</cells>
+								</ColumnListItem>
+							</suggestionRows>
+	  		</Input>
+	  		
+	  	</l:content>
+	  		
+	  </l:VerticalLayout>
+</mvc:View>

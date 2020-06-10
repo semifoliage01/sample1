@@ -1,0 +1,59 @@
+<!-- S31.view.xml as the root page of the whole app -->
+<mvc:View
+	controllerName="whSample3.controller.S31"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+		   
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+	
+  	displayBlock="true">
+ <Shell>
+		<App class="myAppDemoWT" id="app1">
+			<pages>
+				<Page id="S31" title="{i18n>rootPageTitle} S31_whSample1" icon="sap-icon://sort" 
+						floatingFooter="false" showHeader="true" showNavButton="false"  
+						showFooter="false">
+					<content>
+						<l:BlockLayout background="Light">
+							
+							<l:BlockLayoutRow scrollable="false">
+								<l:BlockLayoutCell>
+									<core:Icon color="#1873B4" src="sap-icon://sap-ui5" size="10rem" class="sapUiMediumMarginBottom" width="100%"/>
+									<Title level="H1" titleStyle="H1" text="{i18n>S31_welcome}" width="100%" textAlign="Center"/>
+								</l:BlockLayoutCell>
+							</l:BlockLayoutRow>
+							<l:BlockLayoutRow>
+								<l:BlockLayoutCell >
+									<FlexBox  justifyContent="Center" wrap="Wrap"  direction="Row">
+										<Label text="user" class="sapUiSmallMargin"/>
+										<Input id="userId" value="userName" placeholder="please enter your user account"/>										 
+									</FlexBox>
+									<FlexBox  justifyContent="Center" wrap="Wrap"  direction="Row">
+										<Label text="password" class="ssapUiSmallMarginBottom sapUiSmallMarginTop sapUiSmallMarginRight"/>
+										<Input id="userPw" value="1234" type="Password" placeholder="please enter your password"/>
+									</FlexBox>
+									<FlexBox  justifyContent="Center" wrap="Wrap" direction="Row">
+										<Button text="{i18n>S31_ok}" press="okPress" class="sapUiLargeMarginRight" width="80px"/>
+										 
+										<Button text="{i18n>S31_cancle}" width="80px"/>
+									</FlexBox>
+								</l:BlockLayoutCell>
+							</l:BlockLayoutRow>			
+							 
+						</l:BlockLayout>
+					</content>
+					<footer>
+						<OverflowToolbar>
+							<mvc:XMLView viewName="whSample3.view.fragment.S31_footer"/>	
+						</OverflowToolbar>
+					</footer>
+  				</Page>
+		
+			</pages>
+	
+		</App>
+  	
+ 	</Shell> 	
+ </mvc:View>

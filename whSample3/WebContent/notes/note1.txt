@@ -1,0 +1,109 @@
+1.data binding
+data:
+{
+		"company" : {
+		"name"  : "Acme Inc."
+		"street": "23 Franklin St."
+		"city"  : "Claremont"
+		"state" : "New Hampshire"
+		"zip"   : "03301"
+		"revenue": "1833990"
+	}
+}
+
+1.1property binding: 
+a: 一种通过this.getView().setModel(oModel), 
+<Input
+		value="{/company/name}"
+	/>
+b: this.getView().setModel(oModel, "view") 或者已经在manifest.json 配置过之后
+view>/company/name
+
+两种binding
+1.object setting 里面 
+var oInput = new sap.m.Input({
+	value: "{/company/name}"
+});
+2.xml 里面
+<Input
+		value="{/company/name}"
+	/>
+	
+还可以在创建control 之后通过方法添加binding
+oInput.bindProperty("value", "/company/name");
+或者
+oInput.bindProperty("value", {
+	path: "/company/name",
+	type: new TypeInteger()
+});
+或者用已有的方法， 比如
+ComboBoxTextField.bindValue("/company/name");
+去掉binding
+ComboBoxTextField..unbindProperty("value");
+
+
+
+*Formatting Property Values
+SAPUI5 provides two different options for converting data. 
+1 Formatter functions for one-way conversion
+
+2 Data types in two-way binding
+
+*Binding update
+只有binding 的properties 改变， 才update,  format change 不会触发 update
+Using JavaScript, you can define a type to be used for a property binding by passing it as a third parameter in bindProperty or by adding it to the binding information by using the key type, as shown here:
+oTextField.bindProperty("value", "/company/name", new sap.ui.model.type.String());
+
+oControl = new sap.m.Input({
+    value: {
+        path:"/company/revenue",
+        type: new TypeFloat({
+            minFractionDigits: 2,
+            maxFractionDigits: 2
+        })
+    }  
+    
+3.router
+Our App view is now only containing the empty app tag. The router will automatically add the view that corresponds to the current URL into the app control. The router identifies the app control with the ID that corresponds to the property controlId: “app” in the AppDescriptor.
+
+4.getSource
+The control instance that has been interacted with can be accessed by the getSource method that is available for all SAPUI5 events. 
+var oItem = oEvent.getSource();oItem.getBindingContext("invoice").getPath().substr(1)
+
+5 oData v2 vs oData v4
+oData v4 要用必须设置“synchronizationMode”： “None” 在router target 部分
+"sap.ui5" : {
+        "models" : {
+            "" : {
+                "dataSource" : "peopleRemote",
+                "settings" : {
+                    "synchronizationMode" : "None",
+                    "updateGroupId" : "myAppUpdateGroup"
+                }
+                
+6 Table extended from class sap.m.ListBase
+所以可以用property: items, 和footerText
+
+7 table binding 
+Element sap.ui.core.mvc.XMLView#container-App2---main: aggregations with cardinality 0..n only allow binding paths as attribute value (wrong value: items='peopleOData>/People') 
+bing 一定要用path
+
+
+8 sap.ui.core.control =>metadata (which from managedObject.extend
+ 'metadata' object literal:
+
+library : string
+properties : object
+defaultProperty : string
+aggregations : object
+defaultAggregation : string
+associations : object
+events : object
+specialSettings : object// this one is still experimental and not for public usage!
+
+9 
+sap.m.ColumnListItem can be used with the cells aggregation to create rows for the sap.m.Table control.
+
+
+
+

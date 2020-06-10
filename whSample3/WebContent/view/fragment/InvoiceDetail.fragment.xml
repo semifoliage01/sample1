@@ -1,0 +1,51 @@
+<!-- InvoiceDetail.fragment.xml -->
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" 
+   xmlns:wt="whSample3.controller.control">
+   <Dialog
+      id="invoiceDetail"
+      title="{i18n>FragmentDetail}"
+      resizable="true"
+      showHeader="true"
+      stretch="false"
+      draggable="true">
+   <ObjectHeader  id="objectHeader"				 
+				intro="{invoice>ShipperName}"
+				title="{invoice>ProductName}"
+				number="{
+							parts:[{path:'invoice>ExtendedPrice'},{path:'view>/currencys/currency'}],
+							type: 'sap.ui.model.type.Currency',
+							formatOptions: {showMeasure: false}
+						}" 
+				numberUnit="{view>/currencys/currency}" 
+				numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Information' }"
+				>
+				<statuses>
+					<ObjectStatus
+						text="Some Damaged"
+						state="Error" />
+					<ObjectStatus
+						text="In Stock"
+						state="Success" />
+				</statuses>
+				<attributes>
+					<ObjectAttribute text="{invoice>ShipperName} {invoice>ShippedDate}" />
+					<ObjectAttribute text="{Width} x {Depth} x {Height} {DimUnit}" />
+					<ObjectAttribute text=" quantity {invoice>Quantity}" />
+					<ObjectAttribute
+						text="www.sap.com"
+						active="true"
+						press="handleLinkObjectAttributePress" />
+				</attributes>
+					
+			</ObjectHeader>
+   <buttons>
+	   	<Button text="ok" press=".onCloseDialog"/>
+	   	<Button text="cancel" press=".onCloseDialog" />
+   </buttons>
+   <wt:ProductRating id="rating" class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+   </Dialog>
+   
+   
+</core:FragmentDefinition>

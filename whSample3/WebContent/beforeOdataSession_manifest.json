@@ -1,0 +1,202 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+	"id": "whSample3",
+	"type": "application",
+	"i18n": "i18n/i18n.properties",
+	"title": "{{appTitle}}",
+	"description": "{{appDescription}}",
+	"applicationVersion": {
+	  "version": "1.0.0"
+	}
+	,
+	"dataSources": {
+	  "invoiceRemote": {
+		"uri": "https://services.odata.org/V2/Northwind/Northwind.svc/",
+		"type": "OData",
+		"settings": {
+		  "odataVersion": "2.0"
+		}
+	  },
+	  "northwind": {
+		"uri": "http://localhost:8081/https://services.odata.org/V2/Northwind/Northwind.svc/",
+
+		"type": "OData",
+		"settings": {
+			"odataVersion": "2.0"
+			}
+		}
+	}
+  },
+  "sap.ui": {
+	"technology": "UI5",
+	"deviceTypes": {
+		"desktop": true,
+		"tablet": true,
+		"phone": true
+	}
+  },
+  "sap.ui5": {
+	"rootView": {
+		"viewName": "whSample3.view.S31",
+		"type": "XML",
+		"async": true,
+		"id": "whSample3"
+	},
+	"dependencies": {
+	  "minUI5Version": "1.60",
+	  "libs": {
+		"sap.m": {},
+		"sap.ui.commons":{}
+	  }
+	},
+	"models": {
+	  		"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "whSample3.i18n.i18n"
+				}
+			},
+			"invoice": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "resources/json/Invoices.json"
+			},
+			"view": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "resources/json/View.json"
+			},
+			"page": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "resources/json/Pages.json"
+			},
+			"employees": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "resources/json/Employees.json"
+			},
+			"resume": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "resources/json/Resume.json"
+			},			 
+			"invoiceOData": {
+				"dataSource": "invoiceRemote"
+			},			 
+			"peopleOData": {
+				"dataSource": "peopleRemote"
+			  }
+		},
+	  "resources": {
+		  "css": [
+			{
+			  "uri": "css/style.css"
+			},
+			{
+			  "uri": "css/style2.css"
+			}
+		  ]
+		},
+	"routing": {
+	  "config": {
+		"routerClass": "sap.m.routing.Router",
+		"viewType": "XML",
+		"viewPath": "whSample3.view",
+		"controlId": "app1",
+		"controlAggregation": "pages",
+		"bypassed": {
+               "target": "notFound"
+            },
+		"async": true
+	  },
+	  "routes": [
+		{
+		  "pattern": "",
+		  "name": "start",
+		  "target": "start"
+		},
+		{
+		  "pattern": "S11",
+		  "name": "S11",
+		  "target": "S11_page"
+		},
+		{
+		  "pattern": "S11_detail/{invoicePath}",
+		  "name": "S11DetailPage",
+		  "target": "S11_detailPage"
+		},
+		{
+		  "pattern": "employeeMain",
+		  "name": "employeeMain",
+		  "target": "employeeMain"
+		},
+		{
+		  "pattern": "employees",
+		  "name": "employeeList",
+		  "target": "employeeList"
+		},
+		{
+		  "pattern": "employeeDetail/{employeePath}",
+		  "name": "employeeDetail",
+		  "target": "employeeDetail"
+		},
+		{
+		  "pattern": "employeeResume",
+		  "name": "employeeResume",
+		  "target": "employeeResume"
+		},
+		{
+		  "pattern": "oData",
+		  "name": "oDataMain",
+		  "target": "oData"
+		},
+		{
+		  "pattern": "demo",
+		  "name": "demo",
+		  "target": "demo"
+		}	
+	  ],
+	  "targets": {
+		"start": {
+		  "viewId": "start",
+		  "viewName": "S31"
+		},
+		"S11_page": {
+		  "viewId": "S11Id",
+		  "viewName": "S11"
+		},
+		"S11_detailPage": {
+		  "viewId": "detail",
+		  "viewName": "S11_detail"
+		},
+		"employeeMain": {
+		  "viewId": "Main",
+		  "viewName": "employee.employeeMain"
+		},
+		"employeeList": {
+		  "viewId": "employeeList",
+		  "viewName": "employee.employeeList"
+		},
+		"employeeDetail": {
+		  "viewId": "employeeDetail",
+		  "viewName": "employee.employeeDetail"
+		},
+		"employeeResume": {
+		  "viewId": "employeeResume",
+		  "viewName": "employee.employeeResume"
+		},
+		"oData": {
+		  "viewId": "oDataMain",
+		  "viewName": "oDataSample.oDataMain"
+		},
+        "notFound": {
+           "viewId": "notFound",
+           "viewName": "NotFound",
+           "transition": "show"
+        },
+		"demo": {
+		  "viewId": "detail",
+		  "viewName": "S11"
+		}
+	  }
+	}
+	
+  }
+}

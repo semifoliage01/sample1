@@ -1,0 +1,104 @@
+<!-- oDataMain.view.xml -->
+<!-- oDataMain page -->
+<mvc:View
+	controllerName="whSample3.controller.oDataSample.oDataMain"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m"
+		   
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified"
+	
+  	displayBlock="true">
+  	
+  	<Page 
+  			showNavButton="true" navButtonPress=".onNavBack">
+  			
+  				<Table
+							id="peopleList"
+							footerText="this is footertext"
+							growing="true"
+							growingThreshold="10"
+							items="{
+								path: 'peopleOData>/value'
+							}">
+							<columns>
+								<Column id="userNameColumn">
+									<Text text="{i18n>userNameLabelText}"/>
+								</Column>
+								<Column id="firstNameColumn">
+									<Text text="{i18n>firstNameLabelText}"/>
+								</Column>
+								<Column id="lastNameColumn">
+									<Text text="{i18n>lastNameLabelText}"/>
+								</Column>
+								<Column id="ageColumn">
+									<Text text="{i18n>ageLabelText}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Input value="{peopleOData>UserName}"/>
+									</cells>
+									<cells>
+										<Input value="{FirstName}"/>
+									</cells>
+									<cells>
+										<Input value="{LastName}"/>
+									</cells>
+									<cells>
+										<Input value="{Age}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						
+			<Table
+							id="peopleList2"
+							footerText="this is footertext"
+							growing="true"
+							growingThreshold="10"
+							items="{
+								path: 'peopleOData>/value'
+							}">
+							<columns>
+								<Column id="userNameColumn2">
+									<Text text="{i18n>userNameLabelText}"/>
+								</Column>
+								<Column id="firstNameColumn2">
+									<Text text="{i18n>firstNameLabelText}"/>
+								</Column>
+								<Column id="lastNameColumn2">
+									<Text text="{i18n>lastNameLabelText}"/>
+								</Column>
+								<Column id="ageColumn2">
+									<Text text="{i18n>ageLabelText}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Input value="{peopleOData>UserName}"/>
+									</cells>
+									<cells>
+										<Input value="{FirstName}"/>
+									</cells>
+									<cells>
+										<Input value="{LastName}"/>
+									</cells>
+									<cells>
+										<Input value="{Age}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+  			<footer>
+  				<Text text="not completed at step1. it will moved to App2, please forward." />
+  			</footer>
+  	</Page>
+  	
+</mvc:View>

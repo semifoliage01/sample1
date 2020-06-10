@@ -1,0 +1,238 @@
+<!-- dataBindingS8.view.xml -->
+<!-- dataBinding step 8 page -->
+<mvc:View
+	controllerName="whSample3.controller.dataBinding.dataBindingS8"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+		   
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+	xmlns:f="sap.ui.layout.form"
+	
+  	displayBlock="true">
+  	<Page id="dataBindingS8Page" title="{i18n>dataBindingMain}" class="sapUiResponsiveContentPadding" showNavButton="true" navButtonPress=".onNavBack" showHeader="true">
+  		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button id="nav" icon="sap-icon://nav-back"  press=".onNavBack" />
+				</contentLeft>
+				<contentRight>
+					<Button id="edit" text="Edit" enabled="false" press="handleEditPress" />
+					<Button id="save" text="Save" type="Emphasized" visible="false" press="handleSavePress" />
+					<Button id="cancel" text="Cancel" visible="false" press="handleCancelPress" />
+					<Button id="nextPage" text="" icon="sap-icon://open-command-field" visible="true" press=".onNextPage" />
+				</contentRight>
+			</Bar>
+		</customHeader>
+  		<Text text="{dataBinding>/firstName}" />
+  		<Panel >
+  			<l:VerticalLayout>
+				<Label class="sapUiSmallMargin" text="{i18n>address}:"/>
+				<FormattedText class="sapUiSmallMarginBegin sapUiSmallMarginBottom" htmlText="{dataBinding>/address/street}&lt;br&gt;{dataBinding>/address/zip} {dataBinding>/address/city}&lt;br&gt;{dataBinding>/address/country}" width="200px"/>
+			</l:VerticalLayout>
+			<l:VerticalLayout>
+				<Label text="{i18n>salesToDate}:" class="sapUiSmallMargin"/>
+				<Input width="200px" enabled="{dataBinding>/enabled}" description="{dataBinding>/currencyCode}"
+					value="{
+						parts: [
+							{path: 'dataBinding>/salesToDate'},
+							{path: 'dataBinding>/currencyCode'}
+						],
+						type: 'sap.ui.model.type.Currency',
+						formatOptions: {showMeasure: false}
+					}"/>
+			</l:VerticalLayout>  		
+  		</Panel> 
+  		<f:SimpleForm id="SimpleFormDisplay354wide"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address--simpleForm"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:toolbar>				
+				<Toolbar>
+					<Label text="Address--simpleForm" />
+					<ToolbarSpacer />
+					<SearchField 
+								id="searchCustomer" 
+								liveChange="onFilter" 
+								width="150px"
+								placeholder="Enter the Customer Name..."
+								search=".onSearch"
+								enableSuggestions="true"
+								suggest="onSuggest"
+								suggestionItems="{
+												path: 'email>/emails',
+												sorter: { path: 'Customer' }
+											}"
+								>
+								<suggestionItems>
+									<SuggestionItem text="{email>Customer}" 
+													
+													key="{email>Country}"/>
+								</suggestionItems>
+									<layoutData><OverflowToolbarLayoutData minWidth="70%" maxWidth="80%" shrinkable="true"/></layoutData>
+					</SearchField>
+				</Toolbar>
+			</f:toolbar>
+			<f:content>				
+				<Label text="Full name of the contact" />
+				<Text id="nameText" text="{email>Customer} " />
+				<Label text="Street and number where the contact is located" />
+				<Text text="{email>Country} " />
+				<Label text="ZIP Code and City" />
+				<Text text="{dataBinding>/address/zip} {dataBinding>/address/city}" />
+				<Label text="Country where the contact is located" />				
+				<Text id="countryText" text="{dataBinding>/address/country}" />
+				<TextArea value="eeee" cols="50"  width="80%"/>
+				<Link class="sapUiSmallMarginBegin"
+					href="{
+							parts: [
+								'dataBinding>/firstName',
+								'dataBinding>/lastName'
+							],
+							formatter: '.formatMail'
+						}"
+					text="{i18n>sendEmail}"/>
+					
+			</f:content>
+		</f:SimpleForm>	
+		
+		<!-- simpleForm with input as searchfiedl -->
+		<l:VerticalLayout 
+			width="100%">
+			<l:content>
+				<Label text="input by clicking the item and send CCM email" labelFor="productInput"/>
+				
+			</l:content>
+		</l:VerticalLayout>
+		<Input
+			id="emailInput"
+			type="Text"
+			placeholder="Enter Customer Name ..."
+			showSuggestion="true"
+			showTableSuggestionValueHelp="false"
+			suggestionItemSelected=".onInputItemSelected"
+			suggestionRows="{
+										path: 'email>/emails',
+										sorter: { path: 'Customer' }
+									}">
+			<suggestionColumns>
+				<Column
+					hAlign="Begin"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="Customer"/>
+				</Column>
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					demandPopin="true"
+					minScreenWidth="Tablet">
+					<Label text="Country"/>
+				</Column>
+				<Column
+					hAlign="Center"
+					popinDisplay="Inline"
+					demandPopin="false"
+					minScreenWidth="Tablet">
+					<Label text="Send to"/>
+				</Column>
+				<Column
+					hAlign="End"
+					popinDisplay="Inline"
+					demandPopin="true">
+					<Label text="CC to"/>
+				</Column>
+			</suggestionColumns>
+			<suggestionRows>
+				<ColumnListItem>
+				<cells>
+					<Label text="{email>Customer}"/>
+					<Label text="{email>Country}"/>
+					<Label text="{email>Send 'TO'}"/>
+					<Label text="{email>Send 'CC'}"
+						/>
+				</cells>
+				</ColumnListItem>
+			</suggestionRows>
+		</Input>
+		<List items="{email>/emails}">
+			<items >
+				<StandardListItem 
+								title="{email>Customer}"
+								info="{email>Country}"
+								type="Active"
+								press="onEmailSelected"
+								>
+				
+				</StandardListItem>
+			</items>
+		</List>
+		<f:SimpleForm id="SimpleFormDisplay354wide_2"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address--simpleForm with input suggestColumn"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:toolbar>				
+				<Toolbar>
+					<Label text="Address--simpleForm with input suggestColumn" />
+					<ToolbarSpacer />					
+					
+				</Toolbar>
+			</f:toolbar>
+			<f:content>				
+				<Label text="Full name of the contact" />
+				<Text id="nameText2" text="{email>Customer} " />
+				<Label text="Street and number where the contact is located" />
+				<Text text="{email>Country} " />
+				<Label text="Send to" />
+				<Text text="{email>Send 'TO'} " />
+				<Label text="Send CC" />
+				<Text text="{email>Send 'CC'} " />
+				<Label text="ZIP Code and City" />
+				<Text text="{dataBinding>/address/zip} {dataBinding>/address/city}" />
+				<Label text="Country where the contact is located" />
+				<Text id="countryText2" text="{dataBinding>/address/country}" />
+				<Label text="Email subject" />
+				<TextArea value="{dataBinding>/emailBody}" cols="50" rows="20" width="80%"/>
+				<Link class="sapUiSmallMarginBegin"
+					href="{
+							parts: [
+								'email>Send TO',
+								'email>Customer',
+								'dataBinding>/emailBody',
+								'email>Send CC'
+							],
+							formatter: '.formatMailCCM'
+						}"
+					text="{i18n>sendEmail}"/>
+					
+			</f:content>
+		</f:SimpleForm>
+  	</Page>
+</mvc:View>

@@ -1,0 +1,45 @@
+<!-- employeeList.view.xml -->
+<!-- List page -->
+<mvc:View
+	controllerName="whSample3.controller.employee.employeeList"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+		   
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+	
+  	displayBlock="true">
+  	
+  	<Page 
+  			showNavButton="true" navButtonPress=".onNavBack"
+  			id="employeeListPage"
+			title="{i18n>EmployeeList}"
+			headerText="{i18n>ListOfAllEmployees}"
+			class="sapUiResponsiveContentPadding">
+  			<List items="{employees>/Employees}" >
+  				<ObjectListItem 
+  					title="{employees>FirstName} {employees>LastName}"	
+  					type="Navigation"
+  					press=".onPressEmployeeDetail"
+  						>
+  				</ObjectListItem>
+  			
+  			
+  			</List> 
+  			<List id="employeeList" headerText="{i18n>ListOfAllEmployees}" items="{employees>/Employees}">
+				<items>
+					<StandardListItem
+						title="{employees>FirstName} {employees>LastName}"
+						iconDensityAware="false"
+						iconInset="false"
+						type="DetailAndActive"
+						press=".onPressEmployeeDetail"/>
+				</items>
+			</List>
+  	
+  	
+  	</Page>
+  	
+  	
+</mvc:View>

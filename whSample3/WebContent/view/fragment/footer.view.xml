@@ -1,0 +1,16 @@
+<mvc:View
+   controllerName="whSample3.controller.fragment.footer"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   >
+   <OverflowToolbar>	
+				<Button text="Reset" type="Transparent" press=".onOpenDialog" icon="sap-icon://account"/>
+				<Button type="Transparent" text="Sort" icon="sap-icon://sort" press="onSort"/>
+				<Button type="Transparent" text="Group" icon="sap-icon://group-2" press="onGroup"/>
+				<SearchField id="maxPrice" liveChange="onFilter" width="150px">
+								<layoutData><OverflowToolbarLayoutData minWidth="100px" maxWidth="100px" shrinkable="true"/></layoutData>
+				</SearchField>
+				<ToolbarSpacer/>
+				<Button text="Info" press="handlePressOpenMenu" icon="sap-icon://action-settings"/>					
+	</OverflowToolbar>
+</mvc:View>

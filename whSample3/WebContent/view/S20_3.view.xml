@@ -1,0 +1,71 @@
+<!-- S20.view.xml -->
+<!-- S20.controller.js -->
+<!-- InvoiceList-->
+<mvc:View
+   controllerName="whSample3.controller.S9"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:core="sap.ui.core" >
+   <List
+   	  id="invoiceList"
+      headerText="{i18n>invoiceListTitle}"
+      class="sapUiResponsiveMargin"
+      width="auto"
+      items="{
+      			path: 'invoiceOData>/Invoices',
+      			sorter: { path: 'ShipperName', descending: true, group : true },
+      			groupHeaderFactory: '.getGroupHeader'
+      			}" 
+      
+      backgroundDesign="Solid"
+      >
+      <headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="{i18n>invoiceListTitle} S20_3" level="H1" />					
+					<Label text="Quantity X Product Name" />
+					<Label text="{Tools.nowDate}" />					
+					<SearchField 
+								id="searchField"
+								width="50%" search=".onFilterInvoices"
+								placeholder="Enter the product name..."
+								enableSuggestions="true"
+								suggest="onSuggest"
+								suggestionItems="{
+												path: 'invoiceOData>/Invoices',
+												sorter: { path: 'ProductName' }
+											}">
+								<suggestionItems>
+									<SuggestionItem text="{invoiceOData>ProductName}" 
+													
+													key="{invoiceOData>ProductName}"/>
+								</suggestionItems>
+					</SearchField>
+					<ToolbarSpacer />
+					<Label text="ExtendedPrice" />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+      <items>
+         <ObjectListItem
+            title="{invoiceOData>Quantity} x {invoiceOData>ProductName} {view>/cur}"
+            number="{
+						parts: [{path: 'invoiceOData>ExtendedPrice'}, {path: 'view>/currencys/currency'}],
+						type: 'sap.ui.model.type.Currency',						
+						formatOptions: {
+							showMeasure: false
+						}
+					}"
+            numberUnit="{view>/currencys/cur}"
+            numberState="{= ${invoiceOData>ExtendedPrice} > 50 ? 'Error' : 'Information' }"
+            icon="sap-icon://accounting-document-verification">
+            <firstStatus>
+            	<ObjectStatus text="{
+						path: 'invoiceOData>Status',
+						formatter: '.formatter.statusText'
+					}" />            
+            </firstStatus>
+            </ObjectListItem>
+      </items>
+   </List>
+</mvc:View>

@@ -1,0 +1,35 @@
+The app control is configured with our custom namespace class myAppDemoWT. This class has no styling rules set and is used in the definition of the CSS rules to define CSS selectors that are only valid for this app.
+
+question2
+icon explore
+https://ui5.sap.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons/?tab=grid&icon=action-settings
+
+question3
+As defined in parameter rootView in the manifest.json file, our root view is sap.ui.demo.walkthrough.view.App. From the component, the root view can be retrieved at runtime by accessing the rootControl aggregation.
+
+question4
+To be able to open the dialog from other controllers as well, we implement a reuse function openHelloDialog which calls the open method of our helper object. By doing so, we also decouple the implementation details of the reuse dialog from the application coding.
+what is decouple the implementation
+
+question5
+data-binding
+Using JavaScript, in the settings object in the constructor of a control, or in special cases, using the bindProperty method of a control
+
+
+question6 about format
+If you use JavaScript, you can pass the formatter function as a third parameter to the bindProperty method, or you can add the binding info with the formatter key. The formatter has a single parameter value, which is the value that is to be formatted, and is executed as a member of the control, meaning it can access additional control properties or model data
+
+
+what is life cycle features of SAPUI5
+Controls always extend sap.ui.core.Control and render themselves. You could also extend sap.ui.core.Element or sap.ui.base.ManagedObject directly if you want to reuse life cycle features of SAPUI5 including data binding for objects that are not rendered. Please refer to the API reference to learn more about the inheritance hierarchy of controls.
+
+ORM of Renderer
+renderer: {
+      render: function(oRM, oControl) {
+        oRM.openTag("div", oControl);
+        
+        
+what's difference between toolbar and overflowToolbar
+
+
+

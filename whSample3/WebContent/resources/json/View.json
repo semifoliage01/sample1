@@ -1,0 +1,9 @@
+{
+  "currencys":	{ 
+		  "currency": "EURsa",
+		  "cur":"CHN Yuan",
+		  "dollar":"US$",
+		  "hasUIChanges":false,
+		  "usernameEmpty" : true
+	  }
+}

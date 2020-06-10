@@ -1,0 +1,131 @@
+<!-- dataBindingS12.view.xml -->
+<!-- dataBinding step 12 page -->
+
+<mvc:View
+	controllerName="whSample3.controller.dataBinding.dataBindingS12"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+		   
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+	xmlns:f="sap.ui.layout.form"
+	
+  	displayBlock="true">
+  	<Page id="dataBindingS8Page" title="{i18n>dataBindingS12}" class="sapUiResponsiveContentPadding" showNavButton="true" navButtonPress=".onNavBack" showHeader="true">
+  		<List 
+  			id="productList" 
+  			items="{product>/products}"
+  			backgroundDesign="Translucent"
+  			headerText="this is product list with product json mode from manifest.json"
+  			>
+  			<items>
+				<ObjectListItem
+					title="{product>ProductName}"
+					intro="{product>QuantityPerUnit}"
+					type="Active"
+					number="{
+								parts: [
+									{path: 'product>UnitPrice'},
+									{path: 'dataBinding>/currencyCode'}
+								],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: { showMeasure: false }								
+							}"
+					numberUnit="{dataBinding>/currencyCode}"
+					showMarkers="true"
+					markFlagged="true"
+					markFavorite="true"
+					markLocked="true"
+					>
+					<attributes>
+						<ObjectAttribute text="{product>QuantityPerUnit}"/>
+						<ObjectAttribute title="{i18n>stockValue}" />
+					</attributes>
+					
+				</ObjectListItem>
+  			</items>
+  			<infoToolbar>
+  			</infoToolbar>
+  		</List>
+  		
+  		<!-- S12 with json mode initiated in the onInit function of the controller -->
+  		<Panel headerText="{i18n>panel3HeaderText}" class="sapUiResponsiveMargin" width="auto">
+			<content>
+				<List headerText="{i18n>productListTitle}" items="{products2>/products}">
+					<items>
+						<ObjectListItem title="{products2>ProductName}"
+							number="{
+								parts: [
+									{path: 'products2>UnitPrice'},
+									{path: 'dataBinding>/currencyCode'}
+								],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: { showMeasure: false }
+							}"
+							numberUnit="{dataBinding>/currencyCode}"
+							numberState="{= ${products2>UnitPrice} > ${dataBinding>/priceThreshold} ? 'Success' : 'Error' }"
+							press="onItemSelected"
+							type="Active">
+							<attributes>
+								<ObjectAttribute text="{products2>QuantityPerUnit}"/>
+								<ObjectAttribute title="{i18n>stockValue}"
+									text="{
+										parts: [
+											{path: 'products2>UnitPrice'},
+											{path: 'products2>UnitsInStock'},
+											{path: 'dataBinding>/currencyCode'}
+										],
+										formatter: '.formatStockValue'
+									}"/>
+							</attributes>
+						</ObjectListItem>
+					</items>
+				</List>
+			</content>
+		</Panel>
+		<Panel id="productDetailsPanel" headerText="{i18n>panel4HeaderText}" class="sapUiResponsiveMargin" width="auto">
+			<l:Grid position="Center" defaultSpan="L3 M6 S12">
+				<Label text="{i18n>ProductID}:" />
+		        <Input value="{products2>ProductID}" />
+		        
+		        <Label text="{i18n>ProductName}:" />
+		        <Input value="{products2>ProductName}" />
+		
+		        <Label text="{i18n>QuantityPerUnit}:" />
+		        <Input value="{products2>QuantityPerUnit}" />
+		        
+		        <Label text="{i18n>UnitPrice}:" />
+		        <Input value="{products2>UnitPrice}" />
+		        
+		        <Label text="{i18n>UnitsInStock}:" />
+		        <Input value="{products2>UnitsInStock}" />
+		        
+		        <Label text="{i18n>Discontinued}:" />
+		        <CheckBox selected="{products2>Discontinued}" />
+			</l:Grid>
+		</Panel>
+		
+		<!-- list in S15  -->
+		<Panel headerText="list of S15page for Aggregation Binding Using a Factory Function">
+			<List items="{products2>/products}">
+				<items>
+					<StandardListItem
+									title="{products2>ProductName} ({products2>QuantityPerUnit})"
+									infos="{products2>QuantityPerUnit}"
+									counter="{
+										parts: [
+											{path: 'products2>UnitPrice'},
+											{path: 'dataBinding>/currencyCode'}
+										],
+										type: 'sap.ui.model.type.Currency',
+										formatOptions: { showMeasure: false }
+										}"
+									>
+						
+					</StandardListItem>
+				</items>			
+			</List>
+		</Panel>
+  	</Page>
+</mvc:View>

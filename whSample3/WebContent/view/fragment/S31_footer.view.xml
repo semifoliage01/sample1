@@ -1,0 +1,11 @@
+<mvc:View
+   controllerName="whSample3.controller.fragment.footer"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   >
+   <OverflowToolbar>
+				<ToolbarSpacer/>
+				<Text text="{i18n>S31footer}"/>				 
+				<ToolbarSpacer/>			
+	</OverflowToolbar>
+</mvc:View>

@@ -1,0 +1,17 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+  <Panel headerText="{dataBinding>/panelHeaderText}  --appended from panel.view.xml" class="sapUiResponsiveMargin" width="auto">
+    <content>
+      <Label text="First Name" class="sapUiSmallMargin" />
+      <Input value="{dataBinding>/firstName}" valueLiveUpdate="true" width="200px" enabled="{dataBinding>/enabled2}" />
+      <Label text="Last Name" class="sapUiSmallMargin" />
+      <Input value="{dataBinding>/lastName}" valueLiveUpdate="true" width="200px" enabled="{dataBinding>/enabled2}" />
+      <CheckBox selected="{dataBinding>/enabled2}" text="Enabled" />
+    </content>
+    <infoToolbar>
+    	<Toolbar design="Info">
+    		<Text text="not completed at step 15. to be continue ....." /> 
+    	
+    	</Toolbar>
+    </infoToolbar>
+  </Panel>
+</mvc:View>
